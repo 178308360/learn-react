@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="app">app</div>
+
+    <!-- 开始开发 -->
+    <!-- 使用Jsx开发,并且希望script 中的jsx代码被解析,必须在script标签中添加一个属性 -->
+    <!-- jsx特点:多个标签最外层(根)只能有一个标签 -->
+    <script type="text/babel">
+      //封装APP组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: 'hello world',
+          };
+        }
+        render() {
+          return (
+            <div>
+              <h2>{this.state.message}</h2>
+              {/* 当监听到点击事件,React内部调用this.btnClick.call(undefined) this在类中找到当前方法,apply传入一个this(undefined),需要bind方法传入当前类this */}
+              <button onClick={this.btnClick.bind(this)}>改变文本</button>
+            </div>
+          );
+        }
+        btnClick() {
+          this.setState({
+            message: 'hello react',
+          });
+        }
+      }
+      //渲染组件
+      ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

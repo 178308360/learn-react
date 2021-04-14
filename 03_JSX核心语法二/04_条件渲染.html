@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      //封装APP组件
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            isLogin: true,
+          };
+        }
+        render() {
+          //方案一:通过if判断
+          let welCome = null;
+          if (this.state.isLogin) {
+            welCome = <h2>欢迎回来</h2>;
+          } else {
+            <h2>请先登录</h2>;
+          }
+          const { isLogin } = this.state;
+          return (
+            <div>
+              {welCome}
+              {/*方案二 :三元运算符*/}
+              <button onClick={(e) => this.loginClick()}>
+                {isLogin ? '退出' : '登录'}
+              </button>
+              <h2>{isLogin ? '你好啊' : null}</h2>
+              {/*方案三:逻辑与*/}
+              <h2>{isLogin && '你好啊'}</h2>
+              {isLogin && <h2>你好啊</h2>}
+            </div>
+          );
+        }
+        loginClick() {
+          this.setState({
+            isLogin: !this.state.isLogin,
+          });
+        }
+      }
+      //渲染组件
+      ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

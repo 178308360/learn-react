@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      //封装APP组件
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {};
+        }
+
+        render() {
+          // <div>
+          //   <div className="header">
+          //     </div>
+          //   <div className="content">
+          //     <a href=""></a></div>
+          //   <footer></footer>
+          // </div>
+          // React.createElement创建出一个ReactElement对象,React利用这个对象组成了一个JS对象树,JS对象树就是虚拟DOM,然后通过ReactDOM.render()渲染成真实DOM
+          /*#__PURE__*/ 
+          var element = React.createElement(
+            'div',
+            null,
+            /*#__PURE__*/ React.createElement('div', {
+              className: 'header',
+            }),
+            /*#__PURE__*/ React.createElement(
+              'div',
+              {
+                className: 'content',
+              },
+              /*#__PURE__*/ React.createElement('a', {
+                href: '',
+              })
+            ),
+            /*#__PURE__*/ React.createElement('footer', null)
+          );
+          console.log(element);
+          return element;
+        }
+      }
+      //渲染组件
+      ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

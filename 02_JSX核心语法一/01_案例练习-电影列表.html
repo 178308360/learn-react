@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      //封装APP组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            movies: ['一', '二', '三'],
+          };
+        }
+        render() {
+          let ArrayList = [];
+          for (let item of this.state.movies) {
+            ArrayList.push(<li>{item}</li>);
+          }
+          return (
+            <div>
+              <h2>电影列表</h2>
+              <ul>
+                //第二种方法
+                {this.state.movies.map((item) => {
+                  return <li>{item}</li>;
+                })}
+                //第一种方法
+                {ArrayList}
+              </ul>
+            </div>
+          );
+        }
+      }
+      //渲染组件
+      ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

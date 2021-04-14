@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      //封装APP组件
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            movies: ['大话西游', '盗梦空间'],
+          };
+          this.btnClick = this.btnClick.bind(this);
+        }
+        render() {
+          return (
+            <div>
+              {/*执行函数this.btnClick.call(undefined,event)*/}
+              {/*onClick={箭头函数.call(undefined,event)} ,event再传入调用的函数liClick*/}
+              <button onClick={this.btnClick}></button>
+              <ul>
+                {this.state.movies.map((item, index) => {
+                  return (
+                    <li
+                      onClick={(e) => {
+                        this.liClick(item, index, e);
+                      }}
+                      classNama="item"
+                      title="li"
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+        btnClick(event) {
+          console.log(event);
+        }
+        liClick(item, index, event) {
+          console.log('Li发生点击', item, index, event);
+        }
+      }
+      //渲染组件
+      ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+  </body>
+</html>
