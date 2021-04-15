@@ -5,6 +5,8 @@ import App from './App';
 import 'antd/dist/antd.css';
 
 import './transition/CSSTransition.css'
+import './transition/Switch.css'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

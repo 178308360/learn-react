@@ -32,9 +32,26 @@ export default class CSSTransitionDemo extends PureComponent {
         </button>
         {/* 
         有三种状态 appear enter exit
-        card-enter */}
+        card-enter card-enter-active  card-enter.done
+        timeout为类添加时间
+        unmountOnExit隐藏后不占位
+        appear第一次加载时有动画
+        */}
         <CSSTransition in={this.state.isShow}  classNames='card'
-        timeout={300}>
+        timeout={300}
+        unmountOnExit={true}
+        appear
+        onEnter={el=>{
+          console.log("进入状态");
+        }}
+        onEntering={el=>{
+          console.log("正在");
+        }}
+        onExited={el=>{
+          console.log("完成");
+        }}
+
+        >
           <Card
             style={{ width: 300 }}
             cover={
