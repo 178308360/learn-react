@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //所有react组件都必须像纯函数一样,保证props不被修改
+    //纯函数
+    //1.确定的输入,产生相同的输出
+    //2.不会产生副作用
+    function sum(num1,num2){
+      return num1+num2
+    }
+
+    let foo=10
+    function add(num){
+      return foo+num
+    }
+    // 是纯函数
+    const bar=10
+    function add1(num){
+      return bar+num
+    }
+
+    //不是一个纯函数,产生了副作用
+    function printObj(info){
+      info.name='why'
+    }
+    const info={
+      name:'w'
+    }
+  </script>
+</body>
+</html>
