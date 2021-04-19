@@ -1,0 +1,26 @@
+import React from 'react';
+import { addAction } from '../store/actionCreators';
+import { connect } from '../utils/connect';
+function Home(props) {
+  return (
+    <div>
+      <h1>home</h1>
+      <h2>当前计数:{props.counter}</h2>
+      <button onClick={(e) => props.increment()}>+1</button>
+      <button onClick={(e) => props.addNumber(5)}>+5</button>
+    </div>
+  );
+}
+
+const mapStateToProps = (state) => ({
+  counter: state.counter,
+});
+const mapDispatchToProps = (dispatch) => ({
+  increment: function () {
+    dispatch(addAction(1));
+  },
+  addNumber: function () {
+    dispatch(addAction(5));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

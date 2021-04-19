@@ -12,7 +12,8 @@ export default class TransitionGroupDemo extends PureComponent {
   
   render() {
     return (
-      <TransitionGroup>
+      <div>
+        <TransitionGroup>
        {
          this.state.names.map((item,index)=>{
            return (
@@ -28,9 +29,9 @@ export default class TransitionGroupDemo extends PureComponent {
            )
          })
        }
-       <button onClick={e=>this.addName()}>+</button>
       </TransitionGroup>
-
+       <button onClick={e=>this.addName()}>+</button>
+      </div>
     )
   }
   addName(){

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  //生成器函数
+  // function* foo(){
+  //     console.log('111');
+  //     yield 'hello';
+  //     console.log('222');
+  //     yield 'world'
+  // }
+  //iterator:迭代器
+  // const result=foo()
+  // console.log(result);
+  //使用迭代器
+  //调用一次next,就会消耗一次迭代器,返回一个对象
+//  const next1=(result.next());
+//  console.log(next1);
+//  const next2=(result.next());
+//  console.log(next2);
+
+
+//  function* get(){
+//    for(let i=1;i<=10;i++){
+//      yield i
+//    }
+//  }
+//  const result1=get()
+//  const next3=(result1.next());
+//  console.log(next3);
+
+//generator和promise结合
+function * bar(){
+  console.log('111');
+  const result= yield new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      resolve('Hello')
+    }, 3000)
+  })
+  console.log(result);
+}
+const it=bar()
+it.next().value.then(res=>{
+  //上一次yield的结果:参数
+  it.next(res)
+})
+</script>
+</body>
+</html>

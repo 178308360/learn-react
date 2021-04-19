@@ -1,0 +1,4 @@
+export const  CHANGE_BANNER='CHANGE_BANNER'
+export const  CHANGE_RECOMMENDS='CHANGE_RECOMMENDS'
+
+export const FETCH='FETCH'
